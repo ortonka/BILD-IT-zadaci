@@ -28,7 +28,7 @@ public class Coins {
 			if (coin == 0)
 				head++;
 		}
-		//ispis
+		//spis
 		System.out.println("Novcic je " + head + " puta pao na pismo, a " + (n-head) + " puta na glavu.");
 	}
 
