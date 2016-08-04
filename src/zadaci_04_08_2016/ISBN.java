@@ -18,66 +18,58 @@ import java.util.InputMismatchException;
 
 public class ISBN {
 
-	static java.util.Scanner input=new java.util.Scanner(System.in);
+	static java.util.Scanner input = new java.util.Scanner(System.in);
+
 	public static void main(String[] args) {
-		
-		
+
 		System.out.print("Unesite prvih devet cifara ISBN broja: ");
-		
-		String unos=checkInput();
-		
+
+		String unos = checkInput();
+
 		isbn(unos);
-		
 
 	}
-	
-
 
 	public static void isbn(String broj) {
-				
 
-			int suma = 0;
+		int suma = 0;
 
-			for (int i = 9; i > 0; i--) {
-				int n = Character.getNumericValue(broj.charAt(i - 1));
-				suma += n * i;
-			}
-			
-			if (suma % 11 == 10)
-				System.out.println(broj + 'X');
-			else
-				System.out.println(broj + (suma % 11));
-
+		for (int i = 9; i > 0; i--) {
+			int n = Character.getNumericValue(broj.charAt(i - 1));
+			suma += n * i;
 		}
 
-		
-	
-	//provjera unosa
+		if (suma % 11 == 10)
+			System.out.println(broj + 'X');
+		else
+			System.out.println(broj + (suma % 11));
+
+	}
+
+	// provjera unosa
 	public static String checkInput() {
 
 		String s = "";
 		boolean error = true; // varijabla za provjeru
-		
+
 		do {
 			try {
 				s = input.next();
-				if(s.length()!=9){
+				if (s.length() != 9) {
 					throw new InputMismatchException("Unos mora sadrzavati 9 karaktera. ");
-					
+
 				}
-				//provjera da li je unos sacinjen od brojeva
-				 Integer.parseInt(s); 
+				// provjera da li je unos sacinjen od brojeva
+				Integer.parseInt(s);
 				error = false;
 			} catch (InputMismatchException e) {
 				System.out.print("Nevalidan unos, pokusajte ponovo: ");
 				input.nextLine();
+			} catch (NumberFormatException nfe) {
+				System.out.print("Nevalidan unos, pokusajte ponovo:  ");
 			}
-			catch(NumberFormatException nfe)  
-			  {  
-			    System.out.print("Nevalidan unos, pokusajte ponovo:  ");  
-			  }  
 		} while (error);
-		
+
 		return s;
 	}
 
