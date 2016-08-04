@@ -43,7 +43,7 @@ public class MinElementArray {
 
 		double n = 0;
 		boolean error = true; // varijabla za provjeru
-		// unos brojeva u nizu
+		// unos broja redova/kolona
 		do {
 			try {
 				n = input.nextDouble();
@@ -53,7 +53,6 @@ public class MinElementArray {
 				input.nextLine();
 			}
 		} while (error);
-		input.close();
 		return n;
 	}
 	
