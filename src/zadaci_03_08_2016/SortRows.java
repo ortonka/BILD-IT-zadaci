@@ -35,7 +35,7 @@ public class SortRows {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
 				System.out.printf("Unesite element matrice na indexu %d,%d: ", i, j);
-				matrix[i][j] = checkInput();
+				matrix[i][j] = checkInputD();
 			}
 		}
 		return matrix;
@@ -89,12 +89,31 @@ public class SortRows {
 
 				int n = 0;
 				boolean error = true; // varijabla za provjeru
-				// unos brojeva u nizu
+				
 				do {
 					try {
 						n = input.nextInt();
 						if(n<0)
 							throw new InputMismatchException("Negativan broj");
+						error = false;
+					} catch (InputMismatchException e) {
+						System.out.print("Nevalidan unos, pokusajte ponovo:  ");
+						input.nextLine();
+					}
+				} while (error);
+				
+				return n;
+			}
+			
+			//provjera unosa za Double varijable
+			public static double checkInputD() {
+
+				double n = 0;
+				boolean error = true; // varijabla za provjeru
+				
+				do {
+					try {
+						n = input.nextDouble();
 						error = false;
 					} catch (InputMismatchException e) {
 						System.out.print("Nevalidan unos, pokusajte ponovo:  ");
