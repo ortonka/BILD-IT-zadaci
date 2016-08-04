@@ -32,11 +32,9 @@ public class PrimeNumbers {
 	}
 
 	public static void printPrimeNumbers(int n1, int n2, int numPerLine) {
+		
 		int totals = 0; //broj primarnih brojeva
 		
-		// ako je pocetna granica intervala manja od 2, stavi pocetnu granicu
-		// kao 2
-
 		if (n1 < 2)  // ako je pocetna granica intervala manja od 2, stavi pocetnu granicu
 			n1 = 2;	 // da je 2, jer je min primarni broj 2
 		
