@@ -30,7 +30,7 @@ public class MaxElementArrayList {
 		ArrayList<Integer> lista4 = new ArrayList<>();
 		lista4.add(5);
 		lista4.add(9);
-		lista4.add(5);
+		lista4.add(-10);
 		System.out.println("Max elemenat ove liste koja sadrzi brojeve je: " + max(lista4));
 
 	}
