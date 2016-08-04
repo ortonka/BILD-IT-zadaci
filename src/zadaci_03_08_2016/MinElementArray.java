@@ -14,21 +14,25 @@ import java.util.InputMismatchException;
 
 public class MinElementArray {
 
+	static java.util.Scanner input = new java.util.Scanner(System.in);
+
 	public static void main(String[] args) {
 
 		final int n = 10; // broje elemenata u nizu
 		double[] array = new double[n]; // kreiraj niz sa n elemenata
-		
-		//Unos elemenata u niz
+
+		// Unos elemenata u niz
 		for (int i = 0; i < n; i++) {
 			System.out.printf("Unesite %d. broj u nizu: ", i + 1);
-			//provjera elemenata te dojela elemenata u niz
+			// provjera elemenata te dojela elemenata u niz
 			array[i] = checkInput();
 		}
-		//ispis minimalnog elementa
+		// ispis minimalnog elementa
 		System.out.printf("Minimalni element u nizu je %f.", min(array));
+		input.close();
 	}
-//metoda koja nalazi min elemenat u nizu
+
+	// metoda koja nalazi min elemenat u nizu
 	public static double min(double[] array) {
 		double min = array[0];
 		for (int i = 0; i < array.length; i++) {
@@ -37,9 +41,9 @@ public class MinElementArray {
 		}
 		return min;
 	}
-//provjera unosa
+
+	// provjera unosa
 	public static double checkInput() {
-		java.util.Scanner input = new java.util.Scanner(System.in);
 
 		double n = 0;
 		boolean error = true; // varijabla za provjeru
@@ -55,5 +59,5 @@ public class MinElementArray {
 		} while (error);
 		return n;
 	}
-	
+
 }
