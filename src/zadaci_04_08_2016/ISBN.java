@@ -27,16 +27,14 @@ public class ISBN {
 		String unos=checkInput();
 		
 		isbn(unos);
-		isbn("013601267");
-		isbn("013031997");
+		
 
 	}
 	
 
 
 	public static void isbn(String broj) {
-		// najprije provjeri da li je duzina unesenog broja ustvari 9 karaktera
-		
+				
 
 			int suma = 0;
 
