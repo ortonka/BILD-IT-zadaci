@@ -29,7 +29,7 @@ public class ISBN {
 		isbn(unos);
 
 	}
-
+	//metoda po uslovima zadatka
 	public static void isbn(String broj) {
 
 		int suma = 0;
