@@ -2,6 +2,14 @@ package zadaci_04_08_2016;
 
 import java.util.InputMismatchException;
 
+/*
+ * Napisati program koji pita korisnika da unese neki cijeli broj te ispisuje njegove najmanje 
+ * faktore u rastucem redosljedu. Na primjer, ukoliko korisnik unese 120 program treba da 
+ * ispise 2, 2, 2, 3, 5. (2 * 2 * 2 * 3 * 5 = 120)
+ * 
+ * @author ortonka
+ */
+
 public class FactoringANumber {
 
 	static java.util.Scanner input = new java.util.Scanner(System.in);
@@ -13,11 +21,11 @@ public class FactoringANumber {
 
 		int[] result = factorsOf(val); // niz faktora
 		// ispis
-		System.out.println("Faktori broja " + val + " je:");
+		System.out.print("Faktori broja " + val + " su: ");
 		// for petlja za ispis faktora broja
 		for (int i = 0; i < result.length && result[i] != 0; i++) {
 			if (result[i] != 1)
-				System.out.println(result[i] + " ");
+				System.out.print(result[i] + " ");
 		}
 	}
 
