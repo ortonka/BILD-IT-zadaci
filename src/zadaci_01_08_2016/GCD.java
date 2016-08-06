@@ -59,7 +59,7 @@ public class GCD {
 		// vraca nulu
 		// kao NZD) ili ako ni jedan nije nula (nalazi NZD)
 		else {
-			int greatestCD = 0;
+			int greatestCD = 1;
 			for (int i = 2; i <= num2 && i <= num1; i++) {
 				if (num1 % i == 0 && num2 % i == 0) {
 					greatestCD = i;

@@ -20,34 +20,35 @@ public class Saving {
 
 		Scanner input = new Scanner(System.in);
 		double amount = 0;
-		//provjera unosa
+		// provjera unosa
 		do {
 			System.out.print("Unesite mjesecni iznos uplate: ");
-			while (!input.hasNextDouble()) {  //sve dok unos nije double
+			while (!input.hasNextDouble()) { // sve dok unos nije double
 				System.out.print("Nevalidan unos! Pokusajte ponovo: ");
 				input.next();
 			}
 			amount = input.nextDouble();
-		} while (amount <= 0);
-		
+		} while (amount < 0);
+
 		int numOfMonth = 0;
-		//provjera unosa
+		// provjera unosa
 		do {
 			System.out.print("Unesite broj mjeseci nakon kojeg zelite vidjeti iznos stednje: ");
-			while (!input.hasNextInt()) { //sve dok unos nije int
+			while (!input.hasNextInt()) { // sve dok unos nije int
 				System.out.print("Nevalidan unos! Pokusajte ponovo: ");
 				input.next();
 			}
 			numOfMonth = input.nextInt();
 		} while (numOfMonth <= 0);
-		//ispis
+		// ispis
 		System.out.printf("Iznos na vasem stednom racunu je %.3f.\n", saving(amount, numOfMonth));
-		
+
 		input.close();
 	}
-	//metoda za racunanje stednje
+
+	// metoda za racunanje stednje
 	public static double saving(double amount, int numOfMoths) {
-		double sum = 0;
+		double sum = 0;	//iznos na racunu
 		for (int i = 0; i < numOfMoths; i++) {
 			sum = (sum + amount) * (1 + 0.00417);
 		}
