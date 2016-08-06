@@ -1,6 +1,6 @@
 package zadaci_05_08_2016;
 /*
- * Napisati program koji prima 10 cijelih brojeva te ih ispisuje u obrnutom redoslijedu. 
+ * Napisati program koji prima 10 cijelih brojeva te ih ispisuje u obrnutom redoslijedu.
  * 
  * @author ortonka
  */
@@ -20,25 +20,12 @@ public class Reverse {
 			System.out.printf("Unesite %2d. cijeli broj: ", i + 1);
 			niz1[i] = checkInput();
 		}
-		
-		int[] niz2 = reverse(niz1);
-		//ispis
 		System.out.println("Niz u obrnutom redoslijedu izgleda: ");
-		for (int e : niz2) {
-			System.out.print(e + " ");
+		for (int i = niz1.length; i > 0; i--) {
+			System.out.print(niz1[i - 1] + " ");
 		}
+		
 
-	}
-
-	// metoda koja vraca niz sa obrnutim redoslijedom elemenata
-	public static int[] reverse(int[] array) {
-		int[] niz = new int[array.length];
-		int counter = array.length - 1;
-		for (int i = 0; i < array.length; i++) {
-			niz[i] = array[counter];
-			counter--;
-		}
-		return niz;
 	}
 
 	// provjera unosa
