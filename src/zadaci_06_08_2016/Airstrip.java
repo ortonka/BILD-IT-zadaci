@@ -23,16 +23,11 @@ public class Airstrip {
 		System.out.print("Unesite ubrzanje u m/s²: ");
 		double a = checkInput(); // ubrzanje
 
-		double length = lengthOfAirstrip(v, a); // duzina koju vrati metod
+		double length = (v * v) / (2 * a); // duzina koju vrati metod
 												// lengthOfAirstrip(v,a)
 		// ispis
 		System.out.printf("Minimalna duzina piste za brzinu %.2f m/s i ubrzanje %.2f m/s² je: %.3f.", v, a, length);
 
-	}
-
-	// metod za duzinu piste
-	public static double lengthOfAirstrip(double v, double a) {
-		return ((v * v) / (2 * a));
 	}
 
 	// provjera unosa

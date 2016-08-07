@@ -19,7 +19,7 @@ public class StringOddPosition {
 		//ispis
 		System.out.print("Karakteri na neparnim pozicijama stringa \"" + s + "\" su: ");
 		for (int i = 0; i < s.length(); i++) {
-			if ((i + 1) % 2 == 1)	//ako je neparna pozicija, ispisi karakter
+			if (i % 2 == 0)	//ako je neparna pozicija, ispisi karakter
 				System.out.print(s.charAt(i));
 		}
 	}

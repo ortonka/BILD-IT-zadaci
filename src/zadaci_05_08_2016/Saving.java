@@ -22,9 +22,9 @@ public class Saving {
 		double amount = 0;
 		// provjera unosa
 		do {
-			System.out.print("Unesite mjesecni iznos uplate: ");
+			System.out.print("Unesite mjesecni iznos uplate, iznos mora biti pozitivan broj: ");
 			while (!input.hasNextDouble()) { // sve dok unos nije double
-				System.out.print("Nevalidan unos! Pokusajte ponovo: ");
+				System.out.print("Nevalidan unos! Pokusajte ponovo, iznos mora biti pozitivan broj: ");
 				input.next();
 			}
 			amount = input.nextDouble();
