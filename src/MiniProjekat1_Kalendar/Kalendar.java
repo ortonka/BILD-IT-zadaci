@@ -82,7 +82,7 @@ public class Kalendar {
 			}
 			option = input.nextInt();
 
-		} while (option < 0 || option > 4);
+		} while (option <= 0 || option > 4);
 		//provjera opcije
 		switch (option) {
 		case 1:
