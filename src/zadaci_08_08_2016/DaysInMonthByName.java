@@ -3,29 +3,19 @@ package zadaci_08_08_2016;
 import java.util.Calendar;
 
 /*
- * Napisati program koji pita korisnika da unese mjesec i godinu te mu ispise broj dana u 
- * datom mjesecu. Na primjer, ukoliko korisnik unese kao godinu 2012 a kao mjesec 2, program 
- * treba ispisati da je Februar 2012 imao 29 dana. Ukoliko korisnik unese kao godinu 2015 a 
- * kao mjesec 3, program treba ispisati da je Mart 2015 imao 31 dan.  
+ * Napisati program koji pita korisnika da unese godinu i prva tri slova imena mjeseca 
+ * (prvo slovo uppercase) te mu ispiše broj dana u tom mjesecu. Na primjer, ukoliko korisnik 
+ * kao godinu unese 2001 a kao mjesec Jan program mu ispisuje da Jan 2011 ima 31 dan.
  * 
- *  @author ortonka
+ * @author ortonka
  */
 
-public class DaysInMonth {
+public class DaysInMonthByName {
+	static java.util.Scanner input = new java.util.Scanner(System.in);
 
 	public static void main(String[] args) {
-
-		java.util.Scanner input = new java.util.Scanner(System.in);
-		//unos mjeseca sa provjerom unosa
-		int month = 0;
-		do {
-			System.out.print("Unesite mjesec(broj od 1 do 12): ");
-			while (!input.hasNextInt()) { // sve dok unos nije int
-				System.out.print("Unesite mjesec(broj od 1 do 12): ");
-				input.next();
-			}
-			month = input.nextInt();
-		} while (month <= 0 || month > 12);
+		int month=checkMonth();
+		
 		//unos godine sa provjerom unosa
 		int year = 0;
 		do {
@@ -38,7 +28,7 @@ public class DaysInMonth {
 		} while (year <= 0);
 		
 		//ispis
-		printNumOfDays(month-1, year);
+		printNumOfDays(month, year);
 		
 
 		input.close();
@@ -67,12 +57,12 @@ public class DaysInMonth {
 			return true;
 		return false;
 	}
-
+//ispis broja dana u mjesecu
 	public static void printNumOfDays(int month, int year) {
 
 		//niz imena mjeseci
-		String[] monthsName = { "Januar", "Februar", "Mart", "April", "Maj", "Juni", "Juli", "August", "Septembar",
-				"Oktobar", "Novembar", "Decembar" };
+		String[] monthsName = { "Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep",
+				"Okt", "Nov", "Dec" };
 		//niz stringova koji ce se koristiti pri ispisu
 		String[] has = { "je imao", "ima", "ce imati" };
 		//broj dana u mjesecu, rezultat dobijen od metoda numOfDaysInMonth
@@ -93,5 +83,28 @@ public class DaysInMonth {
 			return "dana";
 
 	}
+	//provjeri unos
+	public static int checkMonth(){
+		String[] months={"Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul","Aug", "Sep", "Okt", "Nov", "Dec"};
+		//unos mjeseca sa provjerom unosa
+		boolean error = true;
+				String month ="";
+				do {
+					System.out.print("Unesite ime mjeseca,(Prva 3 slova, s tim da je prvo slovo veliko): ");
+					while (!input.hasNext()) { 
+						System.out.print("Unesite mjesec,(Prva 3 slova, s tim da je prvo slovo veliko): ");
+						input.next();
+					}
+					month = input.next();
+					for(int i=0; i<months.length; i++){
+						if(month.equals(months[i]))
+							return i;
+					}
+					error = true;
+				} while (error);
+				return -1;
+		
+	}
+
 
 }
