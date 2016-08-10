@@ -28,7 +28,7 @@ public class CountInString {
 
 
 	}
-	//metoda koja broji broj karaktera a u stringu str
+	//metoda koja broji broj karaktera 'a' u stringu str
 	public static int count(String str, char a) {
 		int num = 0;	//broj karaktera
 		for (int i = 0; i < str.length(); i++) {

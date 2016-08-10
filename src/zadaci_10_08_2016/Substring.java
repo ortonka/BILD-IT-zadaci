@@ -19,7 +19,7 @@ public class Substring {
 		System.out.print("Unesite drugi string: ");
 		String string2 = in.next(); // drugi string
 		in.close();
-		// indexOf vraca index prve pojave substringa, ukoliko postoji ili -1
+		// indexOf vraca index prve pojave substringa, ukoliko postoji ili vrati -1
 		// ukoliko ne postoji
 		if (string1.indexOf(string2) > 0)
 			System.out.printf("\"%s\" je podstring stringa \"%s\".", string2, string1);

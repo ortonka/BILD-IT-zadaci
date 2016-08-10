@@ -18,7 +18,7 @@ public class Combinations17 {
 		for (int i = 1; i <= 7; i++) {
 			for (int j = i + 1; j <= 7; j++) {
 				count++;
-				System.out.printf("%d   %d		 ", i, j);
+				System.out.printf("%d  %d		 ", i, j);
 
 				// ispis 3 kombinacije po liniji
 				if (count % 3 == 0)
