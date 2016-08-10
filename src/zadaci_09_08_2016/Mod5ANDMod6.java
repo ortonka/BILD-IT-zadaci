@@ -11,6 +11,7 @@ public class Mod5ANDMod6 {
 
 	public static final int START_NUMBER = 100;
 	public static final int END_NUMBER = 1000;
+	public static final int NUM_PER_LINE=10;
 
 	public static void main(String[] args) {
 
@@ -23,7 +24,7 @@ public class Mod5ANDMod6 {
 				System.out.print(i + " ");
 			}
 			// ako je brojac dosegnuo vrijednost 10, prebaci u novi red
-			if (count == 10) {
+			if (count == NUM_PER_LINE) {
 				System.out.println();
 				count = 0; // vrati brojac na nulu
 			}
