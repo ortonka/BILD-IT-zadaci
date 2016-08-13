@@ -27,14 +27,14 @@ public class AlphabeticalOrder {
 		do {
 		  swapped = false;	//ako ne udje ni u jednu petlju, redoslijed je vec sortiran
 		  //Ako metod compareTo vrati negativnu vrijednost, zamijeni redoslijed
-		  if (city2.compareTo(city1) < 0) {
+		  if (city2.compareToIgnoreCase(city1) < 0) {
 		    String tmp = city2;
 		    city2 = city1;
 		    city1 = tmp;
 		    swapped = true;
 		  }
 		//Ako metod compareTo vrati negativnu vrijednost, zamijeni redoslijed
-		  if (city3.compareTo(city2) < 0) {
+		  if (city3.compareToIgnoreCase(city2) < 0) {
 		    String tmp = city3;
 		    city3 = city2;
 		    city2 = tmp;
