@@ -7,6 +7,8 @@ import java.util.InputMismatchException;
  * Napisati program koji pita korisnika da unese 3 cijela broja te mu ispiše ta ista tri broja u 
  * rastucem redosljedu. Bonus: Napisati metodu koja prima tri cijela broja kao argumente te vraca 
  * brojeve u rastucem redosljedu. 
+ * 
+ * @author ortonka
  */
 
 public class AscendingOrder {

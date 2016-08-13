@@ -19,7 +19,7 @@ public class RegTablica {
 		//koristeci Math.random, dobiju se nasumicni brojevi koje pretvorimo u karaktere
 		return "" + (char) (Math.random() * 26 + 'A') + (char) (Math.random() * 26 + 65)
 				+ (char) (Math.random() * 26 + 65) + "-" + (int) (Math.random() * 10) + (int) (Math.random() * 10)
-				+ (int) (Math.random() * 10);
+				+ (int) (Math.random() * 10)+ (int) (Math.random() * 10);
 	}
 
 }
