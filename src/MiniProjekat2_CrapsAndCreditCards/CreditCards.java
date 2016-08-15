@@ -29,23 +29,26 @@ import java.util.InputMismatchException;
  *   @author ortonka
  */
 public class CreditCards {
-
+	//Constant array of integers 
 	public static final int[] NUM = { 4, 5, 37, 6 };
+	//Constant array of Strings
 	public static final String[] TYPE = { "Visa", "Master", "American Express", "Discover" };
+	
 	static java.util.Scanner input = new java.util.Scanner(System.in);
 
 	public static void main(String[] args) {
-		System.out.print("Unesite broj kartice: ");
-		long num = checkInput();
-
+		
+		System.out.print("Enter a credit card number as a long integer: ");
+		long num = checkInput();		//number of credit card
+		//Output
 		if (isValid(num))
-			System.out.printf("Broj %d je validan broj %s kartice.", num, typeOfCard(num));
+			System.out.printf("Number %d is valid %s card number.", num, typeOfCard(num));
 		else
-			System.out.printf("Broj %d je nevalidan broj kartice.", num);
+			System.out.printf("Number %d is invalid credit card number.", num);
 
 		input.close();
 	}
-
+	//Return name of type of Credit Card
 	public static String typeOfCard(long number) {
 		int j = 0;
 		for (int i = 0; i < NUM.length; i++) {
@@ -58,24 +61,27 @@ public class CreditCards {
 	// Return true if the card number is valid
 	public static boolean isValid(long number) {
 		boolean start = false;
-
+		//Check prefix in Credit Card number
 		for (int i = 0; i < NUM.length; i++) {
 			if (prefixMatched(number, NUM[i]))
 				start = true;
 		}
+		//If prefix is not matched with prefixes in array NUM, number is not valid
 		if (!start)
 			return false;
+		//If sum is divisible by 10, number is valid
 		if ((sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0)
 			return true;
 		return false;
 	}
 
-	// Get the result from Step 2
+	// Return the sum of double digits in number at even places
 	public static int sumOfDoubleEvenPlace(long number) {
 		int sum = 0;
 		int digit = 0;
 		long num = number;
 		for (int i = 0; i < getSize(number); i++) {
+			//if i is odd number(i starts from zero)
 			if (i % 2 == 1) {
 				digit = (int) (num % 10);
 				sum += getDigit(2 * digit);
@@ -90,7 +96,7 @@ public class CreditCards {
 
 	public static int getDigit(int number) {
 		int num = number;
-
+		
 		if (getSize(number) > 1) {
 
 			int sum = 0;
@@ -109,6 +115,7 @@ public class CreditCards {
 		long digit = 0;
 		long num = number;
 		for (int i = 0; i < getSize(number); i++) {
+			//if i is even number(i starts from zero)
 			if (i % 2 == 0) {
 				digit = num % 10;
 				sum += digit;
@@ -120,6 +127,7 @@ public class CreditCards {
 
 	// Return true if the digit d is a prefix for number
 	public static boolean prefixMatched(long number, int d) {
+		//p is same-sized prefix as d of number
 		long p = getPrefix(number, getSize(d));
 		if (p == d)
 			return true;
@@ -148,19 +156,19 @@ public class CreditCards {
 		return prefix;
 	}
 
-	// provjera unosa
+	// Check input
 	public static long checkInput() {
 
 		long n = 0;
-		boolean error = true; // varijabla za provjeru
-		// unos broja redova/kolona
+		boolean error = true; 
 		do {
 			try {
 				n = input.nextLong();
 				error = false;
 				
+				
 			} catch (InputMismatchException e) {
-				System.out.print("Nevalidan unos, pokusajte ponovo:  ");
+				System.out.print("Invalid input, try again:  ");
 				input.nextLine();
 			}
 		} while (error);
