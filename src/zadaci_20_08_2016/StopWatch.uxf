@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>10</y>
+      <w>200</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>StopWatch
+--
+_-startTime: long_
+_-endTime: long_
+--
++StopWatch(): ctor
+_+start(): void_
+_+stop(): void_
+_+getElapsedTime(): long_
++getStartTime(): long
++getStopTime(): long
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

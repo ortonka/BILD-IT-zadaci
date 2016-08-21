@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>10</y>
+      <w>380</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>Account
+--
+-id = 0: int
+-balance = 0: double
+-annualInterestRate = 0: double
+-dateCreated: LocalDate
+--
++Account(): ctor
++Account(int id_, double balance_): ctor
++getId(): int
++setId(int id_): void
++getBalance(): double
++setBalance(double balance_): void
++getAnnualInterestRate(): double
++setAnnualInterestRate(double annualInterestRate_): void
++getDateCreated(): LocalDate
++getMonthlyInterestRate(): double
++getMonthlyInterest(): double
++withdraw(int amount): void
++deposit(int amount): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
