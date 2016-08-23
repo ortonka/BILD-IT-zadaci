@@ -18,7 +18,7 @@ public class ConnectFour extends Application {
 
 	private Label statusLabel = new Label("Igra crveni.");
 
-	// setup je u suštini priprema za pravljenje izgleda igre
+	//  priprema za pravljenje izgleda igre
 	public void start(Stage pocetniStage) {
 		GridPane grid1 = new GridPane();
 		for (int i = 0; i < 6; i++)
