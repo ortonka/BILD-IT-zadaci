@@ -18,7 +18,7 @@ public class ConnectFour extends Application {
 
 	private Label statusLabel = new Label("Igra crveni.");
 
-	//  priprema za pravljenje izgleda igre
+	// priprema za pravljenje izgleda igre
 	public void start(Stage pocetniStage) {
 		GridPane grid1 = new GridPane();
 		for (int i = 0; i < 6; i++)
@@ -39,7 +39,8 @@ public class ConnectFour extends Application {
 		pocetniStage.setScene(scena);
 		pocetniStage.show();
 	}
-//provjerava je li se doslo do kraja
+
+	// provjerava je li se doslo do kraja
 	public boolean checkFull() {
 		for (int i = 0; i < 6; i++)
 			for (int j = 0; j < 7; j++)
@@ -48,42 +49,62 @@ public class ConnectFour extends Application {
 		return true;
 	}
 
-	public boolean checkWin(char token) {
-		//check rows
+	// postavlja token na prvo prazno polje u koloni u kojoj je kliknut mis
+	public void freeRow(int j) {
+		for (int k = board.length - 1; k >= 0; k--)
+			if (board[k][j].vratiToken() == ' ') {
+				board[k][j].onMouseClick();
+				break;
+			}
+	}
+
+	// pronalazi kolonu u kojoj je kliknut mis
+	public void check(CellX c) {
 		for (int i = 0; i < 6; i++)
-			for(int j=0; j<4; j++){
-			if (board[i][j].vratiToken() == token && board[i][j+1].vratiToken() == token
-					&& board[i][j+2].vratiToken() == token && board[i][j+3].vratiToken() == token) {
-				return true;
+			for (int j = 0; j < 7; j++)
+				if (c.equals(board[i][j]))
+					freeRow(j);
+		;
+	}
+
+	public boolean checkWin(char token) {
+		// check rows
+		for (int i = 0; i < 6; i++)
+			for (int j = 0; j < 4; j++) {
+				if (board[i][j].vratiToken() == token && board[i][j + 1].vratiToken() == token
+						&& board[i][j + 2].vratiToken() == token && board[i][j + 3].vratiToken() == token) {
+					return true;
+				}
 			}
-			}
-		
-		//check columns
+
+		// check columns
 		for (int i = 0; i < 7; i++)
-			for(int j=0; j<3; j++){
-			if (board[j][i].vratiToken() == token && board[j+1][i].vratiToken() == token
-					&& board[j+2][i].vratiToken() == token && board[j+3][i].vratiToken() == token) {
-				return true;
+			for (int j = 0; j < 3; j++) {
+				if (board[j][i].vratiToken() == token && board[j + 1][i].vratiToken() == token
+						&& board[j + 2][i].vratiToken() == token && board[j + 3][i].vratiToken() == token) {
+					return true;
+				}
+
 			}
-	
+		int rowMax = board.length;
+		int colMax = board[0].length;
+
+		// ascendingDiagonalCheck
+		for (int i = 3; i < rowMax; i++) {
+			for (int j = 0; j < colMax - 3; j++) {
+				if (board[i][j].vratiToken() == token && board[i - 1][j + 1].vratiToken() == token
+						&& board[i - 2][j + 2].vratiToken() == token && board[i - 3][j + 3].vratiToken() == token)
+					return true;
 			}
-		int rowMax=board.length;
-		int colMax=board[0].length;
-			
-		 // ascendingDiagonalCheck 
-	    for (int i=3; i<rowMax; i++){
-	        for (int j=0; j<colMax-3; j++){
-	            if (board[i][j].vratiToken() == token && board[i-1][j+1].vratiToken() == token && board[i-2][j+2].vratiToken() == token && board[i-3][j+3].vratiToken() == token)
-	                return true;
-	        }
-	    }
-	    // descendingDiagonalCheck
-	    for (int i=3; i<rowMax; i++){
-	        for (int j=3; j<colMax; j++){
-	            if (board[i][j].vratiToken() == token && board[i-1][j-1].vratiToken() == token && board[i-2][j-2].vratiToken() == token && board[i-3][j-3].vratiToken() == token)
-	                return true;
-	        }
-	    }
+		}
+		// descendingDiagonalCheck
+		for (int i = 3; i < rowMax; i++) {
+			for (int j = 3; j < colMax; j++) {
+				if (board[i][j].vratiToken() == token && board[i - 1][j - 1].vratiToken() == token
+						&& board[i - 2][j - 2].vratiToken() == token && board[i - 3][j - 3].vratiToken() == token)
+					return true;
+			}
+		}
 
 		return false;
 	}
@@ -95,7 +116,9 @@ public class ConnectFour extends Application {
 		public CellX() {
 			setStyle("-fx-border-color: black");
 			this.setPrefSize(2000, 2000);
-			this.setOnMouseClicked(e -> onMouseClick());
+			this.setOnMouseClicked(e -> {
+				check(this);
+			});
 		}
 
 		// vraca token onog igraca koji je pritisnuo u odredjeno polje
@@ -106,12 +129,13 @@ public class ConnectFour extends Application {
 		// postavlja novi token
 		public void postaviToken(char x) {
 			token1 = x;
-			
-	
+
 			// pravimo vizuelni token "R" - crveni krug
 			if (token1 == 'R') {
+
 				Ellipse ellipse = new Ellipse(this.getWidth() / 2, this.getHeight() / 2, this.getWidth() / 2 - 10,
 						this.getHeight() / 2 - 10);
+
 				ellipse.centerXProperty().bind(this.widthProperty().divide(2));
 				ellipse.centerYProperty().bind(this.heightProperty().divide(2));
 				ellipse.radiusXProperty().bind(this.widthProperty().divide(2).subtract(10));
@@ -144,7 +168,7 @@ public class ConnectFour extends Application {
 
 				// provjerava status igre
 				if (checkWin(player)) {
-					statusLabel.setText(player + " je pobijedio! Game Over");
+					statusLabel.setText((player == 'R' ? "Crveni igrac" : "Zuti igrac") + " je pobijedio! Game Over");
 					player = ' ';
 				} else if (checkFull()) {
 					statusLabel.setText("Neriješeno!");
@@ -153,13 +177,13 @@ public class ConnectFour extends Application {
 					// promjena reda
 					player = (player == 'R') ? 'Y' : 'R';
 					// ispisuje ko je na redu u status labelu
-					statusLabel.setText(player + " je na redu.");
+					statusLabel.setText((player == 'R' ? "Crveni igrac" : "Zuti igrac") + " je na redu.");
 				}
 			}
 		}
 	}
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		launch(args);
 	}
 }
