@@ -15,6 +15,21 @@ public class Rational extends Number implements Comparable<Rational> {
 		this.r[0] = ((denominator > 0) ? 1 : -1) * numerator / gcd;
 		this.r[1] = Math.abs(denominator) / gcd;
 	}
+	//create Rational number from double value
+	public Rational(double d) {
+		String s = String.valueOf(d);
+		long digitsDec = s.length() - 1 - s.indexOf('.');
+		long denom = 1;
+		for (int i = 0; i < digitsDec; i++) {
+			d *= 10;
+			denom *= 10;
+		}
+
+		long num = (int) Math.round(d);
+		long g = gcd(num, denom);
+		this.r[0] = num / g;
+		this.r[1] = denom / g;
+	}
 
 	/** Find GCD of two numbers */
 	private static long gcd(long n, long d) {
